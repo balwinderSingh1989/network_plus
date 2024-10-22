@@ -1,7 +1,7 @@
-name: retail_core
-description: "A new Flutter package project."
+name: network_plus
+description: "A powerful network package for Flutter built on top of DIO, designed to streamline API development with features like caching, logging, and local data storage management."
 version: 0.0.1
-homepage:
+homepage: https://github.com/balwinderSingh1989/network_plus  #
 
 environment:
   sdk: '>=3.4.0-64.0.dev <4.0.0'
