@@ -46,9 +46,9 @@ class SharedPrefStorageProvider extends LocalStorageService {
     if (keyValue.provider != StorageProvider.sharedPref) return false;
     if (_preferences == null) await _initPreferencesIfNeeded();
 
-    if (keyValue.data == null) {
-      throw Exception('Metadata cannot be null');
-    }
+    // if (keyValue.data == null) {
+    //   throw Exception('Metadata cannot be null');
+    // }
     // Iterate over the entries of the metadata map
     keyValue.data.forEach((key, value) {
       if (value is String) {

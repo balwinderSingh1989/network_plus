@@ -16,7 +16,7 @@ class HttpCacheStorage {
   HttpCacheStorage(this.storage, this.config);
 
   CacheStore? getResponseCacheStorage() {
-    if (storage == null || storage == CacheStorage.MemCache) {
+    if (storage == CacheStorage.MemCache) {
       return MemCacheStore();
     } else if (storage == CacheStorage.Hive) {
       if (config != null && config!.hiveDirectory != null) {

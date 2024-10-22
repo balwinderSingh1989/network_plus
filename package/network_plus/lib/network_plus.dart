@@ -7,8 +7,6 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 export 'package:dio_cache_interceptor/src/model/cache_options.dart';
-import 'package:dio_http2_adapter/dio_http2_adapter.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:network_plus/source/data/sources/cache/caching_provider.dart';
