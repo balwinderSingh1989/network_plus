@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 /// A custom interceptor for handling token refresh and request retries.
 /// This should be the first interceptor added to DIO as interceptors are executed in  FIFO

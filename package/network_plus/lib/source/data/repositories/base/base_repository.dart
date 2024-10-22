@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 
 abstract class BaseRepository<T extends BaseResponseModel<dynamic>> {

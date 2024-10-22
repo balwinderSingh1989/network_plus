@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 // Global instance of GetIt for dependency injection
 final coreDILocator = GetIt.instance;

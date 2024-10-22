@@ -1,5 +1,5 @@
 // Network executor with generic types
-part of retail_core;
+part of network_plus;
 
 enum METHOD_TYPE { POST, GET, DELETE, PUT, PATCH }
 

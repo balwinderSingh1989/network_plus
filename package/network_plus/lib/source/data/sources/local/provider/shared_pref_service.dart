@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 class SharedPrefStorageProvider extends LocalStorageService {
   //static AppLocalStorageSharePref? _instance;

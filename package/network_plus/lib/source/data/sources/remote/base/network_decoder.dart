@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 
 //This decodes and performs mapping in isolate

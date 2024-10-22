@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 // Encapsulate Dio client in separate class
 class ApiClient {

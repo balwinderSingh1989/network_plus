@@ -482,13 +482,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "retail_core",
+      "name": "network_plus",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-09-22T13:55:25.620686Z",
+  "generated": "2024-10-22T13:22:13.902804Z",
   "generator": "pub",
   "generatorVersion": "3.5.0-293.0.dev",
   "flutterRoot": "file:///Users/balwindersingh/flutter",

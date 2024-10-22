@@ -1,4 +1,4 @@
-library retail_core;
+library network_plus;
 
 import 'dart:async';
 import 'dart:convert';
@@ -11,9 +11,9 @@ import 'package:dio_http2_adapter/dio_http2_adapter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:retail_core/source/data/sources/cache/caching_provider.dart';
-import 'package:retail_core/source/data/sources/remote/base/retry_policy.dart';
-import 'package:retail_core/source/util/generic_extenstion.dart';
+import 'package:network_plus/source/data/sources/cache/caching_provider.dart';
+import 'package:network_plus/source/data/sources/remote/base/retry_policy.dart';
+import 'package:network_plus/source/util/generic_extenstion.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:logger/logger.dart';
 import 'source/util/logger_config.dart';

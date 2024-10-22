@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 ///LogInterceptor should be the last to add since the interceptors are FIFO.
 class LogInterceptor extends Interceptor {

@@ -1,5 +1,5 @@
 // Generic Result type with custom error
-part of retail_core;
+part of network_plus;
 
 class Result<T> {
   final bool isSuccess;

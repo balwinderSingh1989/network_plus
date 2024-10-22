@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 /// this will be the helper for logs. By default only logs are enabled only in debug builds,
 /// to enable logs on release build as well change filter to ProductionFilter.

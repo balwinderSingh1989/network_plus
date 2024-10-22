@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 @Deprecated("Work in Progress")
 class SecuredStorageProvider  extends LocalStorageService{

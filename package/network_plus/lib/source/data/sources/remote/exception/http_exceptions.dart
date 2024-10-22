@@ -1,4 +1,4 @@
-part of retail_core;
+part of network_plus;
 
 class BadRequestException extends DioException {
   BadRequestException(RequestOptions r, Response? rs) : super(requestOptions: r , response : rs);

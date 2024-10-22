@@ -1,5 +1,5 @@
 // Custom exception types for network and type errors
-part of retail_core;
+part of network_plus;
 
 class NetworkError {
   final String? message;
