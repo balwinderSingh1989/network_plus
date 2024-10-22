@@ -18,7 +18,10 @@ Add the package to your `pubspec.yaml`:
 
 
 dependencies:
-  network_plus: ^1.0.0
+  network_plus: ^0.0.1
+
+pub.dev
+https://pub.dev/packages/network_plus/install
 
 ##  Getting Started
 
