@@ -24,11 +24,17 @@ class NetworkExecutor<T extends BaseResponseModel> {
     RetryPolicy? retryPolicy = null,
   }) async {
     try {
-      if (headers != null && headers.isNotEmpty) {
-        _apiClient._dio.options.headers.addAll(headers);
-      }
-      final response = await _apiClient.sendRequest(urlPath, method, params, id: id, isJsonEncode: isJsonEncode, cachePolicy : cachePolicy);
+      // Instead of directly modifying Dio's headers, consider a new map
+      final requestOptions = Options(
+        headers: headers != null && headers.isNotEmpty
+            ? {..._apiClient._dio.options.headers, ...headers}
+            : _apiClient._dio.options.headers,
+      );
+
+      final response = await _apiClient.sendRequest(urlPath, method, params, id: id, isJsonEncode: isJsonEncode, cachePolicy : cachePolicy , options: requestOptions);
+
       //final data = await NetworkDecoder.shared.decode<T>(response: response , responseType : dataResponseType );
+
       final data = await NetworkDecoderX.shared.decode<T, M, K>(
         response: response,
         responseType: dataResponseType,

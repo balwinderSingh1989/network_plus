@@ -24,45 +24,61 @@ class ApiClient {
   }
 
   // Send request with generic type for response model
+  // Send request with generic type for response model
   Future<Response> sendRequest(String path,
       METHOD_TYPE method,
       BaseRequestModel params, {
         String? id,
+        Options? options,
         bool isJsonEncode = false, CachePolicy? cachePolicy = null
       }) async {
     final requestParams = buildParams(params);
     switch (method) {
-    case METHOD_TYPE.POST:
-    return await _dio.post(path, data: jsonEncode(requestParams));
-    case METHOD_TYPE.DELETE:
-    if (isJsonEncode) {
-    return await _dio.delete(path, data: jsonEncode(requestParams));
-    } else {
-    _addQueryParameters(_dio, requestParams);
-    return await _dio.delete(path);
-    }
-    case METHOD_TYPE.PUT:
-      if (isJsonEncode) {
-        return await _dio.put(
-            path + (id != null && id.isNotEmpty ? '/$id' : ''),
-            data: jsonEncode(requestParams));
-      } else {
+      case METHOD_TYPE.POST:
+        return await _dio.post(path, data: jsonEncode(requestParams) , options: options );
+      case METHOD_TYPE.DELETE:
+        if (isJsonEncode) {
+          return await _dio.delete(path, data: jsonEncode(requestParams) , options: options);
+        } else {
+          _addQueryParameters(_dio, requestParams);
+          return await _dio.delete(path , options: options);
+        }
+      case METHOD_TYPE.PUT:
+        if (isJsonEncode) {
+          return await _dio.put(
+              path + (id != null && id.isNotEmpty ? '/$id' : ''),
+              data: jsonEncode(requestParams), options: options);
+        } else {
+          _addQueryParameters(_dio, requestParams);
+          return await _dio.put(
+              path + (id != null && id.isNotEmpty ? '/$id' : ''), options: options);
+        }
+      case METHOD_TYPE.GET:
         _addQueryParameters(_dio, requestParams);
-        return await _dio.put(
-            path + (id != null && id.isNotEmpty ? '/$id' : ''));
-      }
-    case METHOD_TYPE.GET:
-    _addQueryParameters(_dio, requestParams);
-    if(cachePolicy != null) {
-      return await _dio.get(
-          path, options: _cacheOptions.copyWith(policy: cachePolicy).toOptions());
-    }
-    else{
-      return await _dio.get(
-          path);
-    }
-    case METHOD_TYPE.PATCH:
-    return await _dio.patch(path, data: jsonEncode(requestParams));
+
+        if (cachePolicy != null) {
+
+          // Merge cache options with custom headers
+          final cacheOptionsWithHeaders = _cacheOptions
+              .copyWith(policy: cachePolicy)
+              .toOptions();
+
+          if (options?.headers != null) {
+            cacheOptionsWithHeaders.headers = {
+              ...cacheOptionsWithHeaders.headers ?? {},
+              ...options!.headers ?? {}
+            };
+          }
+
+          return await _dio.get(
+              path, options: cacheOptionsWithHeaders);
+        }
+        else{
+          return await _dio.get(
+              path,options: options);
+        }
+      case METHOD_TYPE.PATCH:
+        return await _dio.patch(path, data: jsonEncode(requestParams), options: options);
     }
   }
 
