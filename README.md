@@ -77,21 +77,18 @@ You can extend the BaseRepository class to create your own repository. Here’s 
 
 ```dart
 
-class MyCustomRepository extends BaseRepository<GlobalMasterConfigData> {
+class MyCustomRepository extends BaseRepository<YouResponseClass> {
   MyCustomRepository(NetworkExecutor networkExecutor) : super(networkExecutor);
 
   Future<Result<MyUiModel>> fetchData() async {
-    final additionalHeaders = {
-      'Authorization': 'Bearer your_token',
-    };
+  
 
     return await execute<MyMapper, GlobalMasterConfigData, MyUiModel>(
       urlPath: '/api/data',
       method: METHOD_TYPE.GET,
       params: EmptyRequest(),
       mapper: MyMapper(),
-      responseType: GlobalMasterConfigData(),
-      headers: additionalHeaders,
+      responseType: YouResponseClass(),  //YouResponseClass extends BaseResponseModel  
       cachePolicy: CachePolicy.cacheFirst,
       retryPolicy: RetryPolicy(retrialCount: 3, retryDelay: Duration(seconds: 2)),
     );
