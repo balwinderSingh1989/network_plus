@@ -25,8 +25,7 @@ Add the package to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  retail_core:
-    path: ./package/retail_core
+  network_plus: ^0.0.2
 ```
 
 Then run:
