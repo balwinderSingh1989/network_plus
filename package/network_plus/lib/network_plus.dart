@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
-export 'package:dio_cache_interceptor/src/model/cache_options.dart';
+export 'package:http_cache_core/src/model/cache/cache_policy.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:network_plus/source/data/sources/cache/caching_provider.dart';

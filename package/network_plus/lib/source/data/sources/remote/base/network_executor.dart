@@ -20,7 +20,7 @@ class NetworkExecutor<T extends BaseResponseModel> {
     bool isJsonEncode = false,
     Map<String, dynamic>? headers,
     required T dataResponseType,
-    CachePolicy? cachePolicy = null,
+    CacheOption? cacheOption,
     RetryPolicy? retryPolicy = null,
   }) async {
     try {
@@ -31,7 +31,7 @@ class NetworkExecutor<T extends BaseResponseModel> {
             : _apiClient._dio.options.headers,
       );
 
-      final response = await _apiClient.sendRequest(urlPath, method, params, id: id, isJsonEncode: isJsonEncode, cachePolicy : cachePolicy , options: requestOptions);
+      final response = await _apiClient.sendRequest(urlPath, method, params, id: id, isJsonEncode: isJsonEncode, cacheOption : cacheOption , options: requestOptions);
 
       //final data = await NetworkDecoder.shared.decode<T>(response: response , responseType : dataResponseType );
 
@@ -68,7 +68,7 @@ class NetworkExecutor<T extends BaseResponseModel> {
               isJsonEncode: isJsonEncode,
               headers: headers,
               dataResponseType: dataResponseType,
-              cachePolicy: cachePolicy,
+              cacheOption: cacheOption,
               retryPolicy: RetryPolicy(
                 retrialCount: (retryPolicy?.retrialCount ?? 0 ) - 1,
                 retryDelay: retryPolicy?.retryDelay ?? Duration(seconds: 1),

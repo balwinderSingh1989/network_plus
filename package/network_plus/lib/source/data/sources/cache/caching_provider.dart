@@ -1,5 +1,5 @@
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
-import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
+import 'package:http_cache_hive_store/http_cache_hive_store.dart';
 
 enum CacheStorage { MemCache, Hive }
 
@@ -29,4 +29,27 @@ class HttpCacheStorage {
       throw ArgumentError("Unsupported cache storage type: ${storage}");
     }
   }
+}
+
+class CacheOption {
+  /// Handles behaviour to request backend.
+  final CachePolicy policy;
+  /// Overrides any HTTP directive to delete entry past this duration.
+  ///
+  /// Giving this value to a later request will update the previously
+  /// cached response with this directive.
+  ///
+  /// This allows to postpone the deletion.
+  final Duration? maxStale;
+  /// The priority of a cached value.
+  /// Ease the clean up if needed.
+  final CachePriority priority;
+  /// Optional method to decrypt/encrypt cache content
+  final CacheCipher? cipher;
+  const CacheOption({
+    this.policy = CachePolicy.request,
+    this.maxStale,
+    this.priority = CachePriority.normal,
+    this.cipher,
+  });
 }

@@ -15,7 +15,7 @@ abstract class BaseRepository<T extends BaseResponseModel<dynamic>> {
     required T responseType,
     bool isJsonEncode = false,
     Map<String , dynamic>? headers,
-    CachePolicy? cachePolicy = null,
+    CacheOption? cacheOption = null,
     RetryPolicy? retryPolicy = null
   }) async {
       final result = await _networkExecutor.execute<M, T, K>(
@@ -27,7 +27,7 @@ abstract class BaseRepository<T extends BaseResponseModel<dynamic>> {
         dataResponseType: responseType,
         isJsonEncode: isJsonEncode,
         mapper: mapper,
-        cachePolicy: cachePolicy,
+        cacheOption: cacheOption,
         retryPolicy: retryPolicy
       );
       return result;

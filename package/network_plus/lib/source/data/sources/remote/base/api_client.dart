@@ -24,13 +24,13 @@ class ApiClient {
   }
 
   // Send request with generic type for response model
-  // Send request with generic type for response model
   Future<Response> sendRequest(String path,
       METHOD_TYPE method,
       BaseRequestModel params, {
         String? id,
         Options? options,
-        bool isJsonEncode = false, CachePolicy? cachePolicy = null
+        bool isJsonEncode = false,
+        CacheOption? cacheOption = null
       }) async {
     final requestParams = buildParams(params);
     switch (method) {
@@ -56,11 +56,11 @@ class ApiClient {
       case METHOD_TYPE.GET:
         _addQueryParameters(_dio, requestParams);
 
-        if (cachePolicy != null) {
+        if (cacheOption != null ) {
 
           // Merge cache options with custom headers
           final cacheOptionsWithHeaders = _cacheOptions
-              .copyWith(policy: cachePolicy)
+              .copyWith(policy: cacheOption.policy , maxStale:  cacheOption.maxStale)
               .toOptions();
 
           if (options?.headers != null) {
