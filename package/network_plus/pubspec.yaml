@@ -17,6 +17,7 @@ dependencies:
   dio_http2_adapter: ^2.5.0
   dio_cache_interceptor: ^4.0.3
   http_cache_hive_store: ^5.0.1
+  http_cache_core: any
 
   #UTITILES
   freezed_annotation: ^2.4.1
