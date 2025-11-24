@@ -98,8 +98,39 @@ class MyCustomRepository extends BaseRepository<GlobalMasterConfigData> {
 ```
 ## Advanced Features
 
-### API Caching
-The package supports caching to enhance performance. You can specify cache behavior when calling the execute method.
+
+### API Caching Example
+
+You can cache API responses by passing a `cacheOption` to your repository method. This helps reduce network calls and speeds up your app.
+
+```dart
+import 'package:http_cache_core/http_cache_core.dart';
+
+class MyCustomRepository extends BaseRepository<GlobalMasterConfigData> {
+  MyCustomRepository(NetworkExecutor networkExecutor) : super(networkExecutor);
+
+  Future<Result<MyUiModel>> fetchDataWithCache() async {
+    final cacheOption = CacheOption(
+      policy: CachePolicy.cacheFirst, // Use cache if available, otherwise fetch from network
+      maxStale: const Duration(days: 2), // How long cached data is valid
+    );
+
+    return await execute<MyMapper, GlobalMasterConfigData, MyUiModel>(
+      urlPath: '/api/data',
+      method: METHOD_TYPE.GET,
+      params: EmptyRequest(),
+      mapper: MyMapper(),
+      responseType: GlobalMasterConfigData(),
+      cacheOption: cacheOption, // Pass cacheOption here
+    );
+  }
+}
+```
+
+**Tip:**  
+- Use `CachePolicy.cacheFirst` to prefer cached data, or `CachePolicy.request` to always fetch fresh data.
+- Adjust `maxStale` to control cache expiration.
+
 
 ### Updating Headers
 Customize request headers by passing a map of additional headers in the execute method.
