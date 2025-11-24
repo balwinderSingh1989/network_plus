@@ -1,6 +1,6 @@
 name: network_plus
 description: "A powerful network package for Flutter built on top of DIO, designed to streamline API development with features like caching, logging, and local data storage management."
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/balwinderSingh1989/network_plus  #
 
 environment:
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   #NETWORK
-  dio: 5.8.0+1
+  dio: ^5.8.0+1
   dio_http2_adapter: ^2.5.0
   dio_cache_interceptor: ^4.0.3
   http_cache_hive_store: ^5.0.1
@@ -25,6 +25,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   logger: ^2.3.0
   shared_preferences: ^2.2.3
+  network_info_plus: ^5.0.3
 
 dev_dependencies:
   flutter_test:
